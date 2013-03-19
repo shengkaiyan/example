@@ -1,0 +1,423 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1647F81B16E4670100377F4B /* ad.png in Resources */ = {isa = PBXBuildFile; fileRef = 1647F81916E4670000377F4B /* ad.png */; };
+		1647F81F16E4677500377F4B /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1647F81D16E4677500377F4B /* icon.png */; };
+		1647F82016E4677500377F4B /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1647F81E16E4677500377F4B /* icon@2x.png */; };
+		1647F82216E46A6A00377F4B /* ad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1647F82116E46A6A00377F4B /* ad@2x.png */; };
+		16BA8D8916E59FC1005430EE /* libFlurry.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 16BA8D8816E59FC1005430EE /* libFlurry.a */; };
+		16BD6C6B16DDFC4500BFD253 /* pinyin.c in Sources */ = {isa = PBXBuildFile; fileRef = 16BD6C6916DDFC4500BFD253 /* pinyin.c */; };
+		16BD6C6E16DE0ABC00BFD253 /* SmsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16BD6C6D16DE0ABC00BFD253 /* SmsViewController.m */; };
+		16BD6C7116DE0FD700BFD253 /* SmsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 16BD6C7016DE0FD700BFD253 /* SmsCell.m */; };
+		16BD6C7816DE373F00BFD253 /* avatar_thumbnail.png in Resources */ = {isa = PBXBuildFile; fileRef = 16BD6C7216DE373F00BFD253 /* avatar_thumbnail.png */; };
+		16BD6C7916DE373F00BFD253 /* avatar_thumbnail@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16BD6C7316DE373F00BFD253 /* avatar_thumbnail@2x.png */; };
+		16BD6C7A16DE373F00BFD253 /* checkbox_selectedTag.png in Resources */ = {isa = PBXBuildFile; fileRef = 16BD6C7416DE373F00BFD253 /* checkbox_selectedTag.png */; };
+		16BD6C7B16DE373F00BFD253 /* checkbox_selectedTag@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16BD6C7516DE373F00BFD253 /* checkbox_selectedTag@2x.png */; };
+		16BD6C7C16DE373F00BFD253 /* checkbox_unselectedTag.png in Resources */ = {isa = PBXBuildFile; fileRef = 16BD6C7616DE373F00BFD253 /* checkbox_unselectedTag.png */; };
+		16BD6C7D16DE373F00BFD253 /* checkbox_unselectedTag@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16BD6C7716DE373F00BFD253 /* checkbox_unselectedTag@2x.png */; };
+		16F5706B168EC17F00F9028D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F5705A168EC17F00F9028D /* AppDelegate.m */; };
+		16F5706C168EC17F00F9028D /* BWStatusBarOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F5705D168EC17F00F9028D /* BWStatusBarOverlay.m */; };
+		16F5706D168EC17F00F9028D /* status-bar-pattern-black.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 16F5705E168EC17F00F9028D /* status-bar-pattern-black.jpg */; };
+		16F5706E168EC17F00F9028D /* status-bar-pattern-black@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 16F5705F168EC17F00F9028D /* status-bar-pattern-black@2x.jpg */; };
+		16F5706F168EC17F00F9028D /* status-bar-pattern-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 16F57060168EC17F00F9028D /* status-bar-pattern-default.jpg */; };
+		16F57070168EC17F00F9028D /* status-bar-pattern-default@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 16F57061168EC17F00F9028D /* status-bar-pattern-default@2x.jpg */; };
+		16F57071168EC17F00F9028D /* status-bar-progress.png in Resources */ = {isa = PBXBuildFile; fileRef = 16F57062168EC17F00F9028D /* status-bar-progress.png */; };
+		16F57072168EC17F00F9028D /* status-bar-progress@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16F57063168EC17F00F9028D /* status-bar-progress@2x.png */; };
+		16F5707B168EC29500F9028D /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16F57077168EC29500F9028D /* AddressBookUI.framework */; };
+		16F5707C168EC29500F9028D /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16F57078168EC29500F9028D /* MessageUI.framework */; };
+		16F5707D168EC29500F9028D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16F57079168EC29500F9028D /* SystemConfiguration.framework */; };
+		16F57084168EC84700F9028D /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16F57083168EC84700F9028D /* AddressBook.framework */; };
+		16FA68B8166892B100B550A0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16FA68B7166892B100B550A0 /* UIKit.framework */; };
+		16FA68BA166892B100B550A0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16FA68B9166892B100B550A0 /* Foundation.framework */; };
+		16FA68BC166892B100B550A0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16FA68BB166892B100B550A0 /* CoreGraphics.framework */; };
+		16FA68C2166892B100B550A0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 16FA68C0166892B100B550A0 /* InfoPlist.strings */; };
+		16FA68C4166892B100B550A0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 16FA68C3166892B100B550A0 /* main.m */; };
+		16FA68CA166892B100B550A0 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 16FA68C9166892B100B550A0 /* Default.png */; };
+		16FA68CC166892B100B550A0 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16FA68CB166892B100B550A0 /* Default@2x.png */; };
+		16FA68CE166892B100B550A0 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16FA68CD166892B100B550A0 /* Default-568h@2x.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1647F81916E4670000377F4B /* ad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ad.png; sourceTree = "<group>"; };
+		1647F81D16E4677500377F4B /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = SOURCE_ROOT; };
+		1647F81E16E4677500377F4B /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = SOURCE_ROOT; };
+		1647F82116E46A6A00377F4B /* ad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ad@2x.png"; sourceTree = "<group>"; };
+		16BA8D8716E59FC1005430EE /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
+		16BA8D8816E59FC1005430EE /* libFlurry.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry.a; sourceTree = "<group>"; };
+		16BD6C6916DDFC4500BFD253 /* pinyin.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = pinyin.c; path = Classes/pinyin.c; sourceTree = "<group>"; };
+		16BD6C6A16DDFC4500BFD253 /* pinyin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = pinyin.h; path = Classes/pinyin.h; sourceTree = "<group>"; };
+		16BD6C6C16DE0ABC00BFD253 /* SmsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SmsViewController.h; path = Classes/SmsViewController.h; sourceTree = "<group>"; };
+		16BD6C6D16DE0ABC00BFD253 /* SmsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SmsViewController.m; path = Classes/SmsViewController.m; sourceTree = "<group>"; };
+		16BD6C6F16DE0FD600BFD253 /* SmsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SmsCell.h; path = Classes/SmsCell.h; sourceTree = "<group>"; };
+		16BD6C7016DE0FD700BFD253 /* SmsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SmsCell.m; path = Classes/SmsCell.m; sourceTree = "<group>"; };
+		16BD6C7216DE373F00BFD253 /* avatar_thumbnail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = avatar_thumbnail.png; sourceTree = "<group>"; };
+		16BD6C7316DE373F00BFD253 /* avatar_thumbnail@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "avatar_thumbnail@2x.png"; sourceTree = "<group>"; };
+		16BD6C7416DE373F00BFD253 /* checkbox_selectedTag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkbox_selectedTag.png; sourceTree = "<group>"; };
+		16BD6C7516DE373F00BFD253 /* checkbox_selectedTag@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkbox_selectedTag@2x.png"; sourceTree = "<group>"; };
+		16BD6C7616DE373F00BFD253 /* checkbox_unselectedTag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkbox_unselectedTag.png; sourceTree = "<group>"; };
+		16BD6C7716DE373F00BFD253 /* checkbox_unselectedTag@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkbox_unselectedTag@2x.png"; sourceTree = "<group>"; };
+		16F57059168EC17F00F9028D /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Classes/AppDelegate.h; sourceTree = "<group>"; };
+		16F5705A168EC17F00F9028D /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = Classes/AppDelegate.m; sourceTree = "<group>"; };
+		16F5705C168EC17F00F9028D /* BWStatusBarOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BWStatusBarOverlay.h; sourceTree = "<group>"; };
+		16F5705D168EC17F00F9028D /* BWStatusBarOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BWStatusBarOverlay.m; sourceTree = "<group>"; };
+		16F5705E168EC17F00F9028D /* status-bar-pattern-black.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "status-bar-pattern-black.jpg"; sourceTree = "<group>"; };
+		16F5705F168EC17F00F9028D /* status-bar-pattern-black@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "status-bar-pattern-black@2x.jpg"; sourceTree = "<group>"; };
+		16F57060168EC17F00F9028D /* status-bar-pattern-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "status-bar-pattern-default.jpg"; sourceTree = "<group>"; };
+		16F57061168EC17F00F9028D /* status-bar-pattern-default@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "status-bar-pattern-default@2x.jpg"; sourceTree = "<group>"; };
+		16F57062168EC17F00F9028D /* status-bar-progress.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "status-bar-progress.png"; sourceTree = "<group>"; };
+		16F57063168EC17F00F9028D /* status-bar-progress@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "status-bar-progress@2x.png"; sourceTree = "<group>"; };
+		16F57077168EC29500F9028D /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
+		16F57078168EC29500F9028D /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		16F57079168EC29500F9028D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		16F57083168EC84700F9028D /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		16FA68B3166892B100B550A0 /* iSMS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iSMS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		16FA68B7166892B100B550A0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		16FA68B9166892B100B550A0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		16FA68BB166892B100B550A0 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		16FA68BF166892B100B550A0 /* iSMS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iSMS-Info.plist"; sourceTree = "<group>"; };
+		16FA68C1166892B100B550A0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		16FA68C3166892B100B550A0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		16FA68C5166892B100B550A0 /* iSMS-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iSMS-Prefix.pch"; sourceTree = "<group>"; };
+		16FA68C9166892B100B550A0 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		16FA68CB166892B100B550A0 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		16FA68CD166892B100B550A0 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		16FA68B0166892B100B550A0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				16F57084168EC84700F9028D /* AddressBook.framework in Frameworks */,
+				16F5707B168EC29500F9028D /* AddressBookUI.framework in Frameworks */,
+				16F5707C168EC29500F9028D /* MessageUI.framework in Frameworks */,
+				16F5707D168EC29500F9028D /* SystemConfiguration.framework in Frameworks */,
+				16FA68B8166892B100B550A0 /* UIKit.framework in Frameworks */,
+				16FA68BA166892B100B550A0 /* Foundation.framework in Frameworks */,
+				16FA68BC166892B100B550A0 /* CoreGraphics.framework in Frameworks */,
+				16BA8D8916E59FC1005430EE /* libFlurry.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		16BA8D8616E59FC1005430EE /* Flurry */ = {
+			isa = PBXGroup;
+			children = (
+				16BA8D8716E59FC1005430EE /* Flurry.h */,
+				16BA8D8816E59FC1005430EE /* libFlurry.a */,
+			);
+			path = Flurry;
+			sourceTree = "<group>";
+		};
+		16F5705B168EC17F00F9028D /* BWStatusBarOverlay */ = {
+			isa = PBXGroup;
+			children = (
+				16F5705C168EC17F00F9028D /* BWStatusBarOverlay.h */,
+				16F5705D168EC17F00F9028D /* BWStatusBarOverlay.m */,
+				16F5705E168EC17F00F9028D /* status-bar-pattern-black.jpg */,
+				16F5705F168EC17F00F9028D /* status-bar-pattern-black@2x.jpg */,
+				16F57060168EC17F00F9028D /* status-bar-pattern-default.jpg */,
+				16F57061168EC17F00F9028D /* status-bar-pattern-default@2x.jpg */,
+				16F57062168EC17F00F9028D /* status-bar-progress.png */,
+				16F57063168EC17F00F9028D /* status-bar-progress@2x.png */,
+			);
+			name = BWStatusBarOverlay;
+			path = Classes/BWStatusBarOverlay;
+			sourceTree = "<group>";
+		};
+		16FA68A8166892B000B550A0 = {
+			isa = PBXGroup;
+			children = (
+				16FA68BD166892B100B550A0 /* iSMS */,
+				16FA68B6166892B100B550A0 /* Frameworks */,
+				16FA68B4166892B100B550A0 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		16FA68B4166892B100B550A0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				16FA68B3166892B100B550A0 /* iSMS.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		16FA68B6166892B100B550A0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				16F57083168EC84700F9028D /* AddressBook.framework */,
+				16F57077168EC29500F9028D /* AddressBookUI.framework */,
+				16F57078168EC29500F9028D /* MessageUI.framework */,
+				16F57079168EC29500F9028D /* SystemConfiguration.framework */,
+				16FA68B7166892B100B550A0 /* UIKit.framework */,
+				16FA68B9166892B100B550A0 /* Foundation.framework */,
+				16FA68BB166892B100B550A0 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		16FA68BD166892B100B550A0 /* iSMS */ = {
+			isa = PBXGroup;
+			children = (
+				16BD6C6916DDFC4500BFD253 /* pinyin.c */,
+				16BD6C6A16DDFC4500BFD253 /* pinyin.h */,
+				16F57059168EC17F00F9028D /* AppDelegate.h */,
+				16F5705A168EC17F00F9028D /* AppDelegate.m */,
+				16BD6C6C16DE0ABC00BFD253 /* SmsViewController.h */,
+				16BD6C6D16DE0ABC00BFD253 /* SmsViewController.m */,
+				16BD6C6F16DE0FD600BFD253 /* SmsCell.h */,
+				16BD6C7016DE0FD700BFD253 /* SmsCell.m */,
+				16BA8D8616E59FC1005430EE /* Flurry */,
+				16F5705B168EC17F00F9028D /* BWStatusBarOverlay */,
+				16FA68BE166892B100B550A0 /* Supporting Files */,
+			);
+			path = iSMS;
+			sourceTree = "<group>";
+		};
+		16FA68BE166892B100B550A0 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				16FA68BF166892B100B550A0 /* iSMS-Info.plist */,
+				16FA68C0166892B100B550A0 /* InfoPlist.strings */,
+				16FA68C3166892B100B550A0 /* main.m */,
+				16BD6C7216DE373F00BFD253 /* avatar_thumbnail.png */,
+				1647F81D16E4677500377F4B /* icon.png */,
+				1647F81E16E4677500377F4B /* icon@2x.png */,
+				1647F81916E4670000377F4B /* ad.png */,
+				1647F82116E46A6A00377F4B /* ad@2x.png */,
+				16BD6C7316DE373F00BFD253 /* avatar_thumbnail@2x.png */,
+				16BD6C7416DE373F00BFD253 /* checkbox_selectedTag.png */,
+				16BD6C7516DE373F00BFD253 /* checkbox_selectedTag@2x.png */,
+				16BD6C7616DE373F00BFD253 /* checkbox_unselectedTag.png */,
+				16BD6C7716DE373F00BFD253 /* checkbox_unselectedTag@2x.png */,
+				16FA68C5166892B100B550A0 /* iSMS-Prefix.pch */,
+				16FA68C9166892B100B550A0 /* Default.png */,
+				16FA68CB166892B100B550A0 /* Default@2x.png */,
+				16FA68CD166892B100B550A0 /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		16FA68B2166892B100B550A0 /* iSMS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 16FA68D1166892B100B550A0 /* Build configuration list for PBXNativeTarget "iSMS" */;
+			buildPhases = (
+				16FA68AF166892B100B550A0 /* Sources */,
+				16FA68B0166892B100B550A0 /* Frameworks */,
+				16FA68B1166892B100B550A0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = iSMS;
+			productName = iSMS;
+			productReference = 16FA68B3166892B100B550A0 /* iSMS.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		16FA68AA166892B100B550A0 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0450;
+				ORGANIZATIONNAME = Sky;
+			};
+			buildConfigurationList = 16FA68AD166892B100B550A0 /* Build configuration list for PBXProject "iSMS" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 16FA68A8166892B000B550A0;
+			productRefGroup = 16FA68B4166892B100B550A0 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				16FA68B2166892B100B550A0 /* iSMS */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		16FA68B1166892B100B550A0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				16FA68C2166892B100B550A0 /* InfoPlist.strings in Resources */,
+				16FA68CA166892B100B550A0 /* Default.png in Resources */,
+				16FA68CC166892B100B550A0 /* Default@2x.png in Resources */,
+				16FA68CE166892B100B550A0 /* Default-568h@2x.png in Resources */,
+				16F5706D168EC17F00F9028D /* status-bar-pattern-black.jpg in Resources */,
+				16F5706E168EC17F00F9028D /* status-bar-pattern-black@2x.jpg in Resources */,
+				16F5706F168EC17F00F9028D /* status-bar-pattern-default.jpg in Resources */,
+				16F57070168EC17F00F9028D /* status-bar-pattern-default@2x.jpg in Resources */,
+				16F57071168EC17F00F9028D /* status-bar-progress.png in Resources */,
+				16F57072168EC17F00F9028D /* status-bar-progress@2x.png in Resources */,
+				16BD6C7816DE373F00BFD253 /* avatar_thumbnail.png in Resources */,
+				16BD6C7916DE373F00BFD253 /* avatar_thumbnail@2x.png in Resources */,
+				16BD6C7A16DE373F00BFD253 /* checkbox_selectedTag.png in Resources */,
+				16BD6C7B16DE373F00BFD253 /* checkbox_selectedTag@2x.png in Resources */,
+				16BD6C7C16DE373F00BFD253 /* checkbox_unselectedTag.png in Resources */,
+				16BD6C7D16DE373F00BFD253 /* checkbox_unselectedTag@2x.png in Resources */,
+				1647F81B16E4670100377F4B /* ad.png in Resources */,
+				1647F81F16E4677500377F4B /* icon.png in Resources */,
+				1647F82016E4677500377F4B /* icon@2x.png in Resources */,
+				1647F82216E46A6A00377F4B /* ad@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		16FA68AF166892B100B550A0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				16FA68C4166892B100B550A0 /* main.m in Sources */,
+				16F5706B168EC17F00F9028D /* AppDelegate.m in Sources */,
+				16F5706C168EC17F00F9028D /* BWStatusBarOverlay.m in Sources */,
+				16BD6C6B16DDFC4500BFD253 /* pinyin.c in Sources */,
+				16BD6C6E16DE0ABC00BFD253 /* SmsViewController.m in Sources */,
+				16BD6C7116DE0FD700BFD253 /* SmsCell.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		16FA68C0166892B100B550A0 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				16FA68C1166892B100B550A0 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		16FA68CF166892B100B550A0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		16FA68D0166892B100B550A0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		16FA68D2166892B100B550A0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "iSMS/iSMS-Prefix.pch";
+				INFOPLIST_FILE = "iSMS/iSMS-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/iSMS/Classes/Flurry\"",
+					"\"$(SRCROOT)/iSMS/Classes/FlurryAds\"",
+					"\"$(SRCROOT)/iSMS/Flurry\"",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		16FA68D3166892B100B550A0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "iSMS/iSMS-Prefix.pch";
+				INFOPLIST_FILE = "iSMS/iSMS-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/iSMS/Classes/Flurry\"",
+					"\"$(SRCROOT)/iSMS/Classes/FlurryAds\"",
+					"\"$(SRCROOT)/iSMS/Flurry\"",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		16FA68AD166892B100B550A0 /* Build configuration list for PBXProject "iSMS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				16FA68CF166892B100B550A0 /* Debug */,
+				16FA68D0166892B100B550A0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		16FA68D1166892B100B550A0 /* Build configuration list for PBXNativeTarget "iSMS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				16FA68D2166892B100B550A0 /* Debug */,
+				16FA68D3166892B100B550A0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 16FA68AA166892B100B550A0 /* Project object */;
+}
