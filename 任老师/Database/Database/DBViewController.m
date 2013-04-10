@@ -16,6 +16,25 @@
 
 @implementation DBViewController
 
+
+// example sql
+
+// 新建表
+// CREATE TABLE IF NOT EXISTS Contacts (uid VARCHAR(20), fullname VARCHAR(40),                                      firstname VARCHAR(20), lastname VARCHAR(20))
+
+// 查询表
+// SELECT * FROM Contacts
+
+// 插入记录
+// INSERT INTO Contacts (uid, fullname, firstname, lastname) VALUES('1001', 'sky', 's', 'ky')
+
+// 删除记录
+// DELETE FROM Contacts WHERE uid = 1001
+
+// 修改记录
+// UPDATE Contacts set lastname = zx WHERE uid = 1001
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
