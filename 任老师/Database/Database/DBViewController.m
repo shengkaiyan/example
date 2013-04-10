@@ -34,6 +34,9 @@
 // 修改记录
 // UPDATE Contacts set lastname = zx WHERE uid = 1001
 
+// 嵌套查询
+//select uid, fullname, firstname, lastname, url from (select * from Contacts order by istalkonfacebookuser asc) group by id
+
 
 - (void)viewDidLoad
 {
