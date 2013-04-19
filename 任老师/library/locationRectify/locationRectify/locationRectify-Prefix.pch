@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'locationRectify' target in the 'locationRectify' project
+//
+
+#ifdef __OBJC__
+    #import <Foundation/Foundation.h>
+#endif

@@ -13,6 +13,7 @@
 		1603201B171E9D7B000C3E26 /* startPoint.png in Resources */ = {isa = PBXBuildFile; fileRef = 16032017171E9D7B000C3E26 /* startPoint.png */; };
 		1603201C171E9D7B000C3E26 /* startPoint@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16032018171E9D7B000C3E26 /* startPoint@2x.png */; };
 		1603201F171EDE7E000C3E26 /* CarAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1603201E171EDE7E000C3E26 /* CarAnnotationView.m */; };
+		1603203C17213115000C3E26 /* liblocationRectify.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1603203A17213115000C3E26 /* liblocationRectify.a */; };
 		3228345015A53ADB00E3C085 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3228344F15A53ADB00E3C085 /* UIKit.framework */; };
 		3228345215A53ADB00E3C085 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3228345115A53ADB00E3C085 /* Foundation.framework */; };
 		3228345415A53ADB00E3C085 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3228345315A53ADB00E3C085 /* CoreGraphics.framework */; };
@@ -32,6 +33,8 @@
 		16032018171E9D7B000C3E26 /* startPoint@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "startPoint@2x.png"; sourceTree = "<group>"; };
 		1603201D171EDE7E000C3E26 /* CarAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarAnnotationView.h; sourceTree = "<group>"; };
 		1603201E171EDE7E000C3E26 /* CarAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarAnnotationView.m; sourceTree = "<group>"; };
+		1603203A17213115000C3E26 /* liblocationRectify.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = liblocationRectify.a; sourceTree = SOURCE_ROOT; };
+		1603203B17213115000C3E26 /* locationRectify.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = locationRectify.h; sourceTree = SOURCE_ROOT; };
 		3228344B15A53ADB00E3C085 /* PolylineDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PolylineDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3228344F15A53ADB00E3C085 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		3228345115A53ADB00E3C085 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -56,6 +59,7 @@
 				3228345015A53ADB00E3C085 /* UIKit.framework in Frameworks */,
 				3228345215A53ADB00E3C085 /* Foundation.framework in Frameworks */,
 				3228345415A53ADB00E3C085 /* CoreGraphics.framework in Frameworks */,
+				1603203C17213115000C3E26 /* liblocationRectify.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,6 +98,8 @@
 		3228345515A53ADB00E3C085 /* PolylineDemo */ = {
 			isa = PBXGroup;
 			children = (
+				1603203B17213115000C3E26 /* locationRectify.h */,
+				1603203A17213115000C3E26 /* liblocationRectify.a */,
 				3228345E15A53ADB00E3C085 /* AppDelegate.h */,
 				3228345F15A53ADB00E3C085 /* AppDelegate.m */,
 				16032012171D40F7000C3E26 /* TrackViewController.h */,
@@ -258,6 +264,10 @@
 				GCC_PREFIX_HEADER = "PolylineDemo/PolylineDemo-Prefix.pch";
 				INFOPLIST_FILE = "PolylineDemo/PolylineDemo-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -270,6 +280,10 @@
 				GCC_PREFIX_HEADER = "PolylineDemo/PolylineDemo-Prefix.pch";
 				INFOPLIST_FILE = "PolylineDemo/PolylineDemo-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

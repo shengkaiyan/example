@@ -10,7 +10,7 @@
 
 #define DOCUMENTDIRECTORY                           [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex: 0]
 #define ktime1 30 //定位等待时间
-#define ktime2 30//后台线程启动间隔时间
+#define ktime2 10//后台线程启动间隔时间
 
 
 @implementation AppDelegate
@@ -159,7 +159,7 @@ AppDelegate *appDelegate = nil;
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         while (self.inBackground) {
             [self startLocation];
-            [self.trackViewController.mapView setRegion: self.trackViewController.mapView.region animated: YES];
+//            [self.trackViewController.mapView setRegion: self.trackViewController.mapView.region animated: YES];
             [NSThread sleepForTimeInterval:(ktime1)];
             
 //            [self culcate];

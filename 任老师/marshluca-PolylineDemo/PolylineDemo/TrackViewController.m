@@ -8,6 +8,7 @@
 
 #import "TrackViewController.h"
 #import "AppDelegate.h"
+#import "locationRectify.h"
 
 @interface TrackViewController ()
 
@@ -29,65 +30,67 @@
     return self;
 }
 
-const double pi = 3.14159265358979324;
-
+// https://on4wp7.codeplex.com/SourceControl/changeset/view/21483#353936
 //
-// Krasovsky 1940
+//const double pi = 3.14159265358979324;
 //
-// a = 6378245.0, 1/f = 298.3
-// b = a * (1 - f)
-// ee = (a^2 - b^2) / a^2;
-const double a = 6378245.0;
-const double ee = 0.00669342162296594323;
-
+////
+//// Krasovsky 1940
+////
+//// a = 6378245.0, 1/f = 298.3
+//// b = a * (1 - f)
+//// ee = (a^2 - b^2) / a^2;
+//const double a = 6378245.0;
+//const double ee = 0.00669342162296594323;
 //
-// World Geodetic System ==> Mars Geodetic System
-void transform(double wgLat, double wgLon, double *mgLat, double *mgLon)
-{
-    if (outOfChina(wgLat, wgLon))
-    {
-        *mgLat = wgLat;
-        *mgLon = wgLon;
-        return;
-    }
-    double dLat = transformLat(wgLon - 105.0, wgLat - 35.0);
-    double dLon = transformLon(wgLon - 105.0, wgLat - 35.0);
-    double radLat = wgLat / 180.0 * pi;
-    double magic = sin(radLat);
-    magic = 1 - ee * magic * magic;
-    double sqrtMagic = sqrt(magic);
-    dLat = (dLat * 180.0) / ((a * (1 - ee)) / (magic * sqrtMagic) * pi);
-    dLon = (dLon * 180.0) / (a / sqrtMagic * cos(radLat) * pi);
-    *mgLat = wgLat + dLat;
-    *mgLon = wgLon + dLon;
-}
-
-static bool outOfChina(double lat, double lon)
-{
-    if (lon < 72.004 || lon > 137.8347)
-        return true;
-    if (lat < 0.8293 || lat > 55.8271)
-        return true;
-    return false;
-}
-
-static double transformLat(double x, double y)
-{
-    double ret = -100.0 + 2.0 * x + 3.0 * y + 0.2 * y * y + 0.1 * x * y + 0.2 * sqrt(ABS(x));
-    ret += (20.0 * sin(6.0 * x * pi) + 20.0 * sin(2.0 * x * pi)) * 2.0 / 3.0;
-    ret += (20.0 * sin(y * pi) + 40.0 * sin(y / 3.0 * pi)) * 2.0 / 3.0;
-    ret += (160.0 * sin(y / 12.0 * pi) + 320 * sin(y * pi / 30.0)) * 2.0 / 3.0;
-    return ret;
-}
-
-static double transformLon(double x, double y)
-{
-    double ret = 300.0 + x + 2.0 * y + 0.1 * x * x + 0.1 * x * y + 0.1 * sqrt(ABS(x));
-    ret += (20.0 * sin(6.0 * x * pi) + 20.0 * sin(2.0 * x * pi)) * 2.0 / 3.0;
-    ret += (20.0 * sin(x * pi) + 40.0 * sin(x / 3.0 * pi)) * 2.0 / 3.0;
-    ret += (150.0 * sin(x / 12.0 * pi) + 300.0 * sin(x / 30.0 * pi)) * 2.0 / 3.0;
-    return ret;
-}
+////
+//// World Geodetic System ==> Mars Geodetic System
+//void transform(double wgLat, double wgLon, double *mgLat, double *mgLon)
+//{
+//    if (outOfChina(wgLat, wgLon))
+//    {
+//        *mgLat = wgLat;
+//        *mgLon = wgLon;
+//        return;
+//    }
+//    double dLat = transformLat(wgLon - 105.0, wgLat - 35.0);
+//    double dLon = transformLon(wgLon - 105.0, wgLat - 35.0);
+//    double radLat = wgLat / 180.0 * pi;
+//    double magic = sin(radLat);
+//    magic = 1 - ee * magic * magic;
+//    double sqrtMagic = sqrt(magic);
+//    dLat = (dLat * 180.0) / ((a * (1 - ee)) / (magic * sqrtMagic) * pi);
+//    dLon = (dLon * 180.0) / (a / sqrtMagic * cos(radLat) * pi);
+//    *mgLat = wgLat + dLat;
+//    *mgLon = wgLon + dLon;
+//}
+//
+//static bool outOfChina(double lat, double lon)
+//{
+//    if (lon < 72.004 || lon > 137.8347)
+//        return true;
+//    if (lat < 0.8293 || lat > 55.8271)
+//        return true;
+//    return false;
+//}
+//
+//static double transformLat(double x, double y)
+//{
+//    double ret = -100.0 + 2.0 * x + 3.0 * y + 0.2 * y * y + 0.1 * x * y + 0.2 * sqrt(ABS(x));
+//    ret += (20.0 * sin(6.0 * x * pi) + 20.0 * sin(2.0 * x * pi)) * 2.0 / 3.0;
+//    ret += (20.0 * sin(y * pi) + 40.0 * sin(y / 3.0 * pi)) * 2.0 / 3.0;
+//    ret += (160.0 * sin(y / 12.0 * pi) + 320 * sin(y * pi / 30.0)) * 2.0 / 3.0;
+//    return ret;
+//}
+//
+//static double transformLon(double x, double y)
+//{
+//    double ret = 300.0 + x + 2.0 * y + 0.1 * x * x + 0.1 * x * y + 0.1 * sqrt(ABS(x));
+//    ret += (20.0 * sin(6.0 * x * pi) + 20.0 * sin(2.0 * x * pi)) * 2.0 / 3.0;
+//    ret += (20.0 * sin(x * pi) + 40.0 * sin(x / 3.0 * pi)) * 2.0 / 3.0;
+//    ret += (150.0 * sin(x / 12.0 * pi) + 300.0 * sin(x / 30.0 * pi)) * 2.0 / 3.0;
+//    return ret;
+//}
 
 - (void)viewDidLoad
 {
@@ -170,10 +173,10 @@ static double transformLon(double x, double y)
         // check the move distance
         if (appDelegate.pointsGps.count > 0) {
             distance = [location distanceFromLocation:_currentLocation];
-//            if (distance < 10)
-//            {
-//                return;
-//            }
+            if (distance < 10)
+            {
+                return;
+            }
         }
         
         [appDelegate.pointsGps addObject: location];
@@ -205,8 +208,8 @@ static double transformLon(double x, double y)
             [appDelegate.pointsMap addObject: newlocation];
         }
         
-        double newLat;
-        double newLong;
+        double newLat = 0;
+        double newLong = 0;
         transform(location.coordinate.latitude, location.coordinate.longitude, &newLat, &newLong);
         CLLocation *newlocation2 = [[CLLocation alloc] initWithLatitude: newLat longitude:newLong];
         if (appDelegate.pointsRectify.count) {
@@ -217,12 +220,10 @@ static double transformLon(double x, double y)
         
         _currentLocationRectify = newlocation2;
         [appDelegate.pointsRectify addObject: newlocation2];
-        
-
-        
-        lbDistance.text = [NSString stringWithFormat: @"map:%.2f公里", allDistanceMap/1000];
-        lbPrice.text = [NSString stringWithFormat: @"纠偏%.2f公里", allDistanceSky/1000];
-        lbDistanceSky.text = [NSString stringWithFormat: @"%.2f公里 %d", allDistance/1000, collectionCountSky];
+                
+        lbDistance.text = [NSString stringWithFormat: @"map:%.0f米", allDistanceMap];
+        lbPrice.text = [NSString stringWithFormat: @"纠偏%.0f米", allDistanceSky];
+        lbDistanceSky.text = [NSString stringWithFormat: @"%.0f米 %d", allDistance, collectionCountSky];
         lbPriceSky.text = [NSString stringWithFormat: @"%ld元", (long)allDistance/1000];
         
 //        [self.mapView setRegion:MKCoordinateRegionMake(self.mapView.userLocation.location.coordinate, MKCoordinateSpanMake(0.005f, 0.005f)) animated:NO];
@@ -426,7 +427,7 @@ static double transformLon(double x, double y)
         [self.mapView addAnnotation: self.fromAnnotation];
 //        [self.mapView addAnnotation:self.toAnnotation];
         
-        lbShows.text = @"add car";
+//        lbShows.text = @"add car";
     }
 }
 
