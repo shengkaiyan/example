@@ -22,7 +22,6 @@
     UIButton *faceButton;
     
     BOOL showFaceBoard;
-    BOOL showKeyboard;
     
     EFFaceBoard *faceBoard;
 }

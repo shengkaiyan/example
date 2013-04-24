@@ -30,7 +30,7 @@ VIEW_WIDTH, HEIGHT);\
 
 
 static CGFloat const kSentDateFontSize  = 13.0f;
-static CGFloat const kMessageFontSize   = 16.0f;   // 15.0f, 14.0f
+static CGFloat const kMessageFontSize   = 15.0f;   // 15.0f, 14.0f
 static CGFloat const kMessageTextWidth  = 180.0f;
 static CGFloat const kContentHeightMax  = 84.0f;  // 80.0f, 76.0f
 static CGFloat const kChatBarHeight1    = 44.0f;
@@ -101,9 +101,7 @@ static const int kWeiboMaxWordCount = 140;
                                                  name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:)
                                                  name:UIKeyboardWillHideNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillChange:)
-                                                 name:UIKeyboardWillChangeFrameNotification object:nil];
-    
+
     // Create chatBar.
     chatBar = [[UIImageView alloc] initWithFrame:
                CGRectMake(0.0f, self.view.frame.size.height-kChatBarHeight1,
@@ -176,7 +174,6 @@ static const int kWeiboMaxWordCount = 140;
     faceBoard.inputTextView = chatInput;
     
     showFaceBoard = NO;
-    showKeyboard = NO;
 }
 
 - (void)sendMessage
@@ -203,60 +200,31 @@ static const int kWeiboMaxWordCount = 140;
 }
 
 -(void)disFaceKeyboard{
-    NSTimeInterval Time = 0.5;
-    
-    //如果直接点击表情，通过toolbar的位置来判断
-    if (!showFaceBoard && !showKeyboard) {
-        chatInput.inputView = faceBoard;
+    if (!showFaceBoard) {
         [faceButton setBackgroundImage:[UIImage imageNamed:@"Text"] forState:UIControlStateNormal];
-        showFaceBoard = YES;
-        [self AdjustToolBar: UIViewAnimationCurveEaseInOut Duration: 0.25 Height: 244];
+        chatInput.inputView = faceBoard;
+        [chatInput reloadInputViews];
         [chatInput becomeFirstResponder];
+        
+        showFaceBoard = YES;
     }
     else
     {
-//        if (showFaceBoard)
+        [faceButton setBackgroundImage:[UIImage imageNamed:@"face"] forState:UIControlStateNormal];
         
-        //如果键盘没有显示，点击表情了，隐藏表情，显示键盘
-        if (!showFaceBoard) {
-            chatInput.inputView = faceBoard;
-            [faceButton setBackgroundImage:[UIImage imageNamed:@"Text"] forState:UIControlStateNormal];
-            [chatInput reloadInputViews];
-//            [chatInput becomeFirstResponder];
-            showKeyboard = NO;
-            showFaceBoard = YES;
-        }else{
-            
-            //键盘显示的时候，toolbar需要还原到正常位置，并显示表情
-//            [chatInput resignFirstResponder];
-            faceBoard.frame = CGRectMake(0, 0, 320, 216);
-            chatInput.inputView = nil;
-            [faceButton setBackgroundImage:[UIImage imageNamed:@"face"] forState:UIControlStateNormal];
-//            [chatInput becomeFirstResponder];
-            [chatInput reloadInputViews];
-            showKeyboard = YES;
-            showFaceBoard = NO;
-//            [chatInput resignFirstResponder];
-        }
+        chatInput.inputView = nil;
+        [chatInput reloadInputViews];
+        
+        showFaceBoard = NO;
     }
-    
-//    showFaceBoard = !showFaceBoard;
 }
 
 #pragma mark Keyboard Notifications
 - (void)keyboardWillShow:(NSNotification *)notification {
     [self resizeViewWithOptions:[notification userInfo]];
-//    [faceButton setBackgroundImage:[UIImage imageNamed:@"face"] forState:UIControlStateNormal];
-//    showKeyboard = YES;
 }
 
 - (void)keyboardWillHide:(NSNotification *)notification {
-    [self resizeViewWithOptions:[notification userInfo]];
-//    [faceButton setBackgroundImage:[UIImage imageNamed:@"Text"] forState:UIControlStateNormal];
-//    showKeyboard = NO;
-}
-
-- (void)keyboardWillChange:(NSNotification *)notification {
     [self resizeViewWithOptions:[notification userInfo]];
 }
 
@@ -287,8 +255,8 @@ static const int kWeiboMaxWordCount = 140;
     
     [self scrollToBottomAnimated:YES];
     
-    chatInput.contentInset = UIEdgeInsetsMake(0.0f, 0.0f, 3.0f, 0.0f);
-    chatInput.contentOffset = CGPointMake(0.0f, 6.0f); // fix quirk
+//    chatInput.contentInset = UIEdgeInsetsMake(0.0f, 0.0f, 3.0f, 0.0f);
+//    chatInput.contentOffset = CGPointMake(0.0f, 6.0f); // fix quirk
 }
 
 - (void)resizeViewWithOptions2:(NSDictionary *)options {
