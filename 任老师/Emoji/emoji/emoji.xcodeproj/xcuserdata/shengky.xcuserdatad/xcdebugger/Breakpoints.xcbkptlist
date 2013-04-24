@@ -8,16 +8,16 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "emoji/Classes/EFViewController.m"
-         timestampString = "388462846.055474"
+         timestampString = "388510438.608688"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "247"
-         endingLineNumber = "247"
-         landmarkName = "-resizeViewWithOptions:"
+         startingLineNumber = "295"
+         endingLineNumber = "295"
+         landmarkName = "-resizeViewWithOptions2:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "No"
+         shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "emoji/Classes/EFViewController.m"
@@ -47,11 +47,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "emoji/Classes/Face/EFFaceBoard.m"
-         timestampString = "388484610.864065"
+         timestampString = "388497278.228016"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "142"
-         endingLineNumber = "142"
+         startingLineNumber = "137"
+         endingLineNumber = "137"
          landmarkName = "-ChangeFace:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -60,11 +60,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "emoji/Classes/Face/EFFaceBoard.m"
-         timestampString = "388484610.864065"
+         timestampString = "388497278.228016"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "163"
-         endingLineNumber = "163"
+         startingLineNumber = "158"
+         endingLineNumber = "158"
          landmarkName = "-LoadFace"
          landmarkType = "5">
       </FileBreakpoint>
@@ -73,11 +73,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "emoji/Classes/Face/EFFaceBoard.m"
-         timestampString = "388484610.864065"
+         timestampString = "388497278.228016"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "98"
-         endingLineNumber = "98"
+         startingLineNumber = "93"
+         endingLineNumber = "93"
          landmarkName = "-LoadButton"
          landmarkType = "5">
       </FileBreakpoint>
@@ -86,11 +86,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "emoji/Classes/Face/EFFaceBoard.m"
-         timestampString = "388484610.864065"
+         timestampString = "388497278.228016"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "229"
-         endingLineNumber = "229"
+         startingLineNumber = "220"
+         endingLineNumber = "220"
          landmarkName = "-LoadFace"
          landmarkType = "5">
       </FileBreakpoint>
@@ -99,11 +99,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "emoji/Classes/Face/EFFaceBoard.m"
-         timestampString = "388484610.864065"
+         timestampString = "388497278.228016"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "208"
-         endingLineNumber = "208"
+         startingLineNumber = "203"
+         endingLineNumber = "203"
          landmarkName = "-LoadFace"
          landmarkType = "5">
       </FileBreakpoint>
@@ -112,24 +112,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "emoji/Classes/Face/EFFaceBoard.m"
-         timestampString = "388484610.864065"
+         timestampString = "388497278.228016"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "216"
-         endingLineNumber = "216"
-         landmarkName = "-LoadFace"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "emoji/Classes/Face/EFFaceBoard.m"
-         timestampString = "388484610.864065"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "370"
-         endingLineNumber = "370"
+         startingLineNumber = "357"
+         endingLineNumber = "357"
          landmarkName = "-faceButton:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -138,11 +125,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "emoji/Classes/Face/EFFaceBoard.m"
-         timestampString = "388484610.864065"
+         timestampString = "388497278.228016"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "358"
-         endingLineNumber = "358"
+         startingLineNumber = "345"
+         endingLineNumber = "345"
          landmarkName = "-scrollViewDidEndDecelerating:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -151,11 +138,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "emoji/Classes/Face/EFFaceBoard.m"
-         timestampString = "388484610.864065"
+         timestampString = "388497278.228016"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "138"
-         endingLineNumber = "138"
+         startingLineNumber = "133"
+         endingLineNumber = "133"
          landmarkName = "-ChangeFace:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -164,12 +151,90 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "emoji/Classes/Face/EFFaceBoard.m"
-         timestampString = "388485137.086325"
+         timestampString = "388497278.228016"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "187"
-         endingLineNumber = "187"
+         startingLineNumber = "182"
+         endingLineNumber = "182"
          landmarkName = "-LoadFace"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "emoji/Classes/EFViewController.m"
+         timestampString = "388510438.608688"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "556"
+         endingLineNumber = "556"
+         landmarkName = "-textViewDidChange:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "emoji/Classes/Face/EFFaceBoard.m"
+         timestampString = "388497278.228016"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "395"
+         endingLineNumber = "395"
+         landmarkName = "-faceButton:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "emoji/Classes/EFViewController.m"
+         timestampString = "388510438.608688"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "288"
+         endingLineNumber = "288"
+         landmarkName = "-AdjustToolBar:Duration:Height:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "emoji/Classes/EFViewController.m"
+         timestampString = "388510438.608688"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "248"
+         endingLineNumber = "248"
+         landmarkName = "-keyboardWillShow:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "emoji/Classes/EFViewController.m"
+         timestampString = "388510438.608688"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "260"
+         endingLineNumber = "260"
+         landmarkName = "-keyboardWillChange:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "emoji/Classes/EFViewController.m"
+         timestampString = "388510438.608688"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "264"
+         endingLineNumber = "264"
+         landmarkName = "-resizeViewWithOptions:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

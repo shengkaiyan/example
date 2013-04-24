@@ -206,37 +206,54 @@ static const int kWeiboMaxWordCount = 140;
     NSTimeInterval Time = 0.5;
     
     //如果直接点击表情，通过toolbar的位置来判断
-    if (!showFaceBoard) {
-        [chatInput resignFirstResponder];
+    if (!showFaceBoard && !showKeyboard) {
         chatInput.inputView = faceBoard;
         [faceButton setBackgroundImage:[UIImage imageNamed:@"Text"] forState:UIControlStateNormal];
+        showFaceBoard = YES;
+        [self AdjustToolBar: UIViewAnimationCurveEaseInOut Duration: 0.25 Height: 244];
+        [chatInput becomeFirstResponder];
     }
     else
     {
+//        if (showFaceBoard)
+        
         //如果键盘没有显示，点击表情了，隐藏表情，显示键盘
-        if (!showKeyboard) {
-            [chatInput becomeFirstResponder];
+        if (!showFaceBoard) {
+            chatInput.inputView = faceBoard;
+            [faceButton setBackgroundImage:[UIImage imageNamed:@"Text"] forState:UIControlStateNormal];
+            [chatInput reloadInputViews];
+//            [chatInput becomeFirstResponder];
+            showKeyboard = NO;
+            showFaceBoard = YES;
         }else{
             
             //键盘显示的时候，toolbar需要还原到正常位置，并显示表情
-            [chatInput resignFirstResponder];
+//            [chatInput resignFirstResponder];
+            faceBoard.frame = CGRectMake(0, 0, 320, 216);
+            chatInput.inputView = nil;
+            [faceButton setBackgroundImage:[UIImage imageNamed:@"face"] forState:UIControlStateNormal];
+//            [chatInput becomeFirstResponder];
+            [chatInput reloadInputViews];
+            showKeyboard = YES;
+            showFaceBoard = NO;
+//            [chatInput resignFirstResponder];
         }
     }
     
-    showFaceBoard = !showFaceBoard;
+//    showFaceBoard = !showFaceBoard;
 }
 
 #pragma mark Keyboard Notifications
 - (void)keyboardWillShow:(NSNotification *)notification {
     [self resizeViewWithOptions:[notification userInfo]];
-    [faceButton setBackgroundImage:[UIImage imageNamed:@"face"] forState:UIControlStateNormal];
-    showKeyboard = YES;
+//    [faceButton setBackgroundImage:[UIImage imageNamed:@"face"] forState:UIControlStateNormal];
+//    showKeyboard = YES;
 }
 
 - (void)keyboardWillHide:(NSNotification *)notification {
     [self resizeViewWithOptions:[notification userInfo]];
-    [faceButton setBackgroundImage:[UIImage imageNamed:@"Text"] forState:UIControlStateNormal];
-    showKeyboard = NO;
+//    [faceButton setBackgroundImage:[UIImage imageNamed:@"Text"] forState:UIControlStateNormal];
+//    showKeyboard = NO;
 }
 
 - (void)keyboardWillChange:(NSNotification *)notification {
@@ -244,6 +261,37 @@ static const int kWeiboMaxWordCount = 140;
 }
 
 - (void)resizeViewWithOptions:(NSDictionary *)options {
+    NSTimeInterval animationDuration;
+    UIViewAnimationCurve animationCurve;
+    CGRect keyboardEndFrame;
+    [[options objectForKey:UIKeyboardAnimationCurveUserInfoKey] getValue:&animationCurve];
+    [[options objectForKey:UIKeyboardAnimationDurationUserInfoKey] getValue:&animationDuration];
+    [[options objectForKey:UIKeyboardFrameEndUserInfoKey] getValue:&keyboardEndFrame];
+    
+    CGRect keyboardFrameEndRelative = [self.view convertRect:keyboardEndFrame fromView:nil];
+    //    NSLog(@"self.view: %@", self.view);
+    NSLog(@"keyboardFrameEndRelative: %@", NSStringFromCGRect(keyboardFrameEndRelative));
+
+    [self AdjustToolBar: animationCurve Duration: animationDuration Height: keyboardFrameEndRelative.origin.y];
+}
+
+- (void)AdjustToolBar:(UIViewAnimationCurve)animationCurve Duration:(NSTimeInterval)animationDuration Height:(CGFloat)height
+{
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationCurve:animationCurve];
+    [UIView setAnimationDuration:animationDuration];
+    CGRect viewFrame = self.view.frame;
+    viewFrame.size.height = height;
+    self.view.frame = viewFrame;
+    [UIView commitAnimations];
+    
+    [self scrollToBottomAnimated:YES];
+    
+    chatInput.contentInset = UIEdgeInsetsMake(0.0f, 0.0f, 3.0f, 0.0f);
+    chatInput.contentOffset = CGPointMake(0.0f, 6.0f); // fix quirk
+}
+
+- (void)resizeViewWithOptions2:(NSDictionary *)options {
     NSTimeInterval animationDuration;
     UIViewAnimationCurve animationCurve;
     CGRect keyboardEndFrame;

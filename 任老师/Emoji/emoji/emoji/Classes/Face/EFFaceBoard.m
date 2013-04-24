@@ -18,7 +18,7 @@ const float BUTTON_HEIGHT = 30;
 
 - (id)initWithMultiFaceType:(BOOL)hasMultiFaceType DefaultFaceType:(FaceType)defaultFaceType
 {
-    self = [super initWithFrame:CGRectMake(0, 0, 320, 216)];
+    self = [super initWithFrame:CGRectMake(0, 244, 320, 216)];
     if (self) {
         self.backgroundColor = [UIColor colorWithRed:243.0/255.0 green:243.0/255.0 blue:243.0/255.0 alpha:1];
         
@@ -83,11 +83,6 @@ const float BUTTON_HEIGHT = 30;
         {
             [self LoadFace];
         }
-//        UILabel *lbtext = [[UILabel alloc] initWithFrame: CGRectMake(20, 20, 200, 30)];
-//        lbtext.text = @"Hello world";
-//        [self addSubview: lbtext];
-        
-
     }
     
     return self;
@@ -211,11 +206,7 @@ const float BUTTON_HEIGHT = 30;
             int tag = 0;
             for (; tag<=allFaceCount; ) {
                 cursor++;
-                
-                if (cursor > 22) {
-                    ;
-                }
-                
+
                 CGFloat x = (((cursor-1) % pageCount) % xCount)*FaceWidth+((cursor-1)/pageCount*320);
                 CGFloat y = (((cursor-1) % pageCount) / xCount)*FaceHeight;
                 
@@ -302,11 +293,7 @@ const float BUTTON_HEIGHT = 30;
             int tag = 1;
             for (; tag<=allFaceCount+1; ) {
                 cursor++;
-                
-                if (cursor > 22) {
-                    ;
-                }
-                
+
                 CGFloat x = (((cursor-1) % pageCount) % xCount)*FaceWidth+((cursor-1)/pageCount*320);
                 CGFloat y = (((cursor-1) % pageCount) / xCount)*FaceHeight;
                 
@@ -384,7 +371,7 @@ const float BUTTON_HEIGHT = 30;
             
         case Face_image:
         {
-            [faceString appendString:[dictFaceImage objectForKey:[NSString stringWithFormat:@"%03d", tag]]];
+            [faceString appendString: [dictFaceImage objectForKey:[NSString stringWithFormat:@"%03d", tag]]];
         }
             break;
             
@@ -403,6 +390,10 @@ const float BUTTON_HEIGHT = 30;
     }
     else if (self.inputTextView) {
         self.inputTextView.text = faceString;
+        
+        if (self.inputTextView.delegate) {
+            [self.inputTextView.delegate textViewDidChange: self.inputTextView];
+        }
     }
 }
 
@@ -426,8 +417,17 @@ const float BUTTON_HEIGHT = 30;
             string = [inputString substringToIndex:stringLength - 1];
         }
     }
-    self.inputTextField.text = string;
-    self.inputTextView.text = string;
+    
+    if (self.inputTextField) {
+        self.inputTextField.text = string;
+    }
+    else if (self.inputTextView) {
+        self.inputTextView.text = string;
+        
+        if (self.inputTextView.delegate) {
+            [self.inputTextView.delegate textViewDidChange: self.inputTextView];
+        }
+    }
 }
 
 @end
