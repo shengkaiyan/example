@@ -216,6 +216,8 @@
 		160322081727BF53000C3E26 /* EmojiMapSymbols.m in Sources */ = {isa = PBXBuildFile; fileRef = 160322011727BF53000C3E26 /* EmojiMapSymbols.m */; };
 		160322091727BF53000C3E26 /* EmojiPictographs.m in Sources */ = {isa = PBXBuildFile; fileRef = 160322031727BF53000C3E26 /* EmojiPictographs.m */; };
 		1603220A1727BF53000C3E26 /* EmojiTransport.m in Sources */ = {isa = PBXBuildFile; fileRef = 160322051727BF53000C3E26 /* EmojiTransport.m */; };
+		160322101728FEC6000C3E26 /* JBYMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 1603220F1728FEC3000C3E26 /* JBYMessage.m */; };
+		160322131729014C000C3E26 /* JBYChatCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1603221217290149000C3E26 /* JBYChatCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -441,6 +443,10 @@
 		160322031727BF53000C3E26 /* EmojiPictographs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmojiPictographs.m; sourceTree = "<group>"; };
 		160322041727BF53000C3E26 /* EmojiTransport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmojiTransport.h; sourceTree = "<group>"; };
 		160322051727BF53000C3E26 /* EmojiTransport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmojiTransport.m; sourceTree = "<group>"; };
+		1603220E1728FEC1000C3E26 /* JBYMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JBYMessage.h; path = emoji/Classes/JBYMessage.h; sourceTree = "<group>"; };
+		1603220F1728FEC3000C3E26 /* JBYMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JBYMessage.m; path = emoji/Classes/JBYMessage.m; sourceTree = "<group>"; };
+		1603221117290147000C3E26 /* JBYChatCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JBYChatCell.h; path = emoji/Classes/JBYChatCell.h; sourceTree = "<group>"; };
+		1603221217290149000C3E26 /* JBYChatCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JBYChatCell.m; path = emoji/Classes/JBYChatCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -517,6 +523,10 @@
 			children = (
 				1603206C172623A5000C3E26 /* EFViewController.h */,
 				1603206D172623A5000C3E26 /* EFViewController.m */,
+				1603221117290147000C3E26 /* JBYChatCell.h */,
+				1603221217290149000C3E26 /* JBYChatCell.m */,
+				1603220E1728FEC1000C3E26 /* JBYMessage.h */,
+				1603220F1728FEC3000C3E26 /* JBYMessage.m */,
 				160321FB1727BF52000C3E26 /* emoji */,
 				1603208217266AFE000C3E26 /* Categories */,
 				160320731726282C000C3E26 /* GrayPage */,
@@ -1036,6 +1046,8 @@
 				160322081727BF53000C3E26 /* EmojiMapSymbols.m in Sources */,
 				160322091727BF53000C3E26 /* EmojiPictographs.m in Sources */,
 				1603220A1727BF53000C3E26 /* EmojiTransport.m in Sources */,
+				160322101728FEC6000C3E26 /* JBYMessage.m in Sources */,
+				160322131729014C000C3E26 /* JBYChatCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,6 +9,8 @@
 #import "EFViewController.h"
 #import "EFFaceBoard.h"
 #import "NSString+Additions.h"
+#import "JBYMessage.h"
+#import "JBYChatCell.h"
 
 #define CHAT_BACKGROUND_COLOR [UIColor colorWithRed:0.859f green:0.886f blue:0.929f alpha:1.0f]
 
@@ -191,7 +193,12 @@ static const int kWeiboMaxWordCount = 140;
         return;
     }
     
-    [arrayChat addObject: deleteSpace];
+    JBYMessage *newMessage = [[JBYMessage alloc] init];
+    newMessage.content_type = 1;
+    newMessage.content = deleteSpace;
+    newMessage.type = (arrayChat.count%2) ? 1 : 0;
+    [arrayChat addObject: newMessage];
+    
     [aTableView reloadData];
     chatInput.text = @"";
     RESET_CHAT_BAR_HEIGHT;
@@ -236,37 +243,6 @@ static const int kWeiboMaxWordCount = 140;
     [[options objectForKey:UIKeyboardAnimationDurationUserInfoKey] getValue:&animationDuration];
     [[options objectForKey:UIKeyboardFrameEndUserInfoKey] getValue:&keyboardEndFrame];
     
-    CGRect keyboardFrameEndRelative = [self.view convertRect:keyboardEndFrame fromView:nil];
-    //    NSLog(@"self.view: %@", self.view);
-    NSLog(@"keyboardFrameEndRelative: %@", NSStringFromCGRect(keyboardFrameEndRelative));
-
-    [self AdjustToolBar: animationCurve Duration: animationDuration Height: keyboardFrameEndRelative.origin.y];
-}
-
-- (void)AdjustToolBar:(UIViewAnimationCurve)animationCurve Duration:(NSTimeInterval)animationDuration Height:(CGFloat)height
-{
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationCurve:animationCurve];
-    [UIView setAnimationDuration:animationDuration];
-    CGRect viewFrame = self.view.frame;
-    viewFrame.size.height = height;
-    self.view.frame = viewFrame;
-    [UIView commitAnimations];
-    
-    [self scrollToBottomAnimated:YES];
-    
-//    chatInput.contentInset = UIEdgeInsetsMake(0.0f, 0.0f, 3.0f, 0.0f);
-//    chatInput.contentOffset = CGPointMake(0.0f, 6.0f); // fix quirk
-}
-
-- (void)resizeViewWithOptions2:(NSDictionary *)options {
-    NSTimeInterval animationDuration;
-    UIViewAnimationCurve animationCurve;
-    CGRect keyboardEndFrame;
-    [[options objectForKey:UIKeyboardAnimationCurveUserInfoKey] getValue:&animationCurve];
-    [[options objectForKey:UIKeyboardAnimationDurationUserInfoKey] getValue:&animationDuration];
-    [[options objectForKey:UIKeyboardFrameEndUserInfoKey] getValue:&keyboardEndFrame];
-    
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationCurve:animationCurve];
     [UIView setAnimationDuration:animationDuration];
@@ -283,8 +259,8 @@ static const int kWeiboMaxWordCount = 140;
     
     [self scrollToBottomAnimated:YES];
     
-    chatInput.contentInset = UIEdgeInsetsMake(0.0f, 0.0f, 3.0f, 0.0f);
-    chatInput.contentOffset = CGPointMake(0.0f, 6.0f); // fix quirk
+//    chatInput.contentInset = UIEdgeInsetsMake(0.0f, 0.0f, 3.0f, 0.0f);
+//    chatInput.contentOffset = CGPointMake(0.0f, 6.0f); // fix quirk
 }
 
 //- (void)AdjustToolBarY:(CGFloat)height
@@ -362,75 +338,19 @@ static const int kWeiboMaxWordCount = 140;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *identifier = @"cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-    
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
-        
+    JBYChatCell *cell = [tableView dequeueReusableCellWithIdentifier:@"JBYChatCell"];
+    if (!cell) {
+        cell = [JBYChatCell cell: @"JBYChatCell"];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
-    return cell;
     
-//        UIView *view = [[UIView alloc] init];
-//        view.tag = 201;
-//        //添加背景图片imageView
-//        UIImageView *imageView = [[UIImageView alloc] init];
-//        imageView.tag = 202;
-//        [view addSubview:imageView];
-//        
-//        //添加手势
-//        MyLongPressGestureRecognizer *recognizer = [[MyLongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPress:)];
-//        recognizer.minimumPressDuration = 1.0;
-//        [view addGestureRecognizer:recognizer];
-//        [cell.contentView addSubview:view];
-//        
-//        [cell bringSubviewToFront:view];
-//        
-//        [imageView release];
-//        [recognizer release];
-//        [view release];
-//    }
-//    
-//    //重用Cell的时候移除label
-//    UIView *view = (UIView *)[cell viewWithTag:201];
-//    view.frame = CGRectMake(0, 0, cell.contentView.frame.size.width, [[self.rowHeights objectAtIndex:indexPath.row] floatValue]+20);
-//    
-//    for (UIView *subView in [view subviews]) {
-//        if ([subView isKindOfClass:[OHAttributedLabel class]]) {
-//            [subView removeFromSuperview];
-//        }
-//    }
-//    
-//    float sysVersion = [[[UIDevice currentDevice]systemVersion] floatValue];
-//    UIImage *image;//气泡图片
-//    if (sysVersion < 5.0) {
-//        if (indexPath.row % 2 == 0) {
-//            image = [[UIImage imageNamed:@"chat_receive_nor.png"] stretchableImageWithLeftCapWidth:20 topCapHeight:30];
-//        }else {
-//            image = [[UIImage imageNamed:@"chat_send_nor.png"] stretchableImageWithLeftCapWidth:20 topCapHeight:30];
-//        }
-//    }else {
-//        if (indexPath.row % 2 == 0) {
-//            image = [[UIImage imageNamed:@"chat_receive_nor.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(30, 20, 10, 20)];
-//        }else {
-//            image = [[UIImage imageNamed:@"chat_send_nor.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(30, 20, 10, 20)];
-//        }
-//    }
-//    
-//    UIImageView *imageView = (UIImageView *)[view viewWithTag:202];
-//    imageView.image = image;
-//    imageView.frame = view.frame;
-//    
-//    MyLongPressGestureRecognizer *recognizer = (MyLongPressGestureRecognizer *)[view.gestureRecognizers objectAtIndex:0];
-//    //view内添加上label视图
-//    OHAttributedLabel *label = [self.labelArr objectAtIndex:indexPath.row];
-//    label.center = view.center;
-//    recognizer.label = label;
-//    //    [self drawImage:label];
-//    [view addSubview:label];
-//    
-//    return cell;
+    JBYMessage *message = [arrayChat objectAtIndex: indexPath.row];
+    
+    cell.lbContent.text = message.content;
+    cell.isHideName = YES;
+    cell.isSend = message.type;
+    
+    return cell;
 }
 
 - (CGFloat)neededHeightForDescription:(NSString *)description withTableWidth:(NSUInteger)tableWidth Font:(UIFont *)font LineBreakMode:(UILineBreakMode)lineBreakMode
@@ -464,12 +384,7 @@ static const int kWeiboMaxWordCount = 140;
     {  // 需要显示时间
         height += 15;
     }
-    
-    if (indexPath.section==arrayChat.count-1 && indexPath.row==[[arrayChat objectAtIndex: indexPath.section] count]-1)
-    {  // 最后一条记录.
-        height += 6;
-    }
-    
+
     // 返回需要的高度
     return height;
 }
@@ -511,9 +426,15 @@ static const int kWeiboMaxWordCount = 140;
 }
 
 - (void)scrollToBottomAnimated:(BOOL)animated {
-    NSInteger lastSection = [arrayChat count] - 1;
-    if (lastSection >= 0) {
-        NSIndexPath *indexPath = [NSIndexPath indexPathForRow: [[arrayChat objectAtIndex: lastSection] count]-1 inSection: lastSection];
+//    NSInteger lastSection = [arrayChat count] - 1;
+//    if (lastSection >= 0) {
+//        NSIndexPath *indexPath = [NSIndexPath indexPathForRow: [[arrayChat objectAtIndex: lastSection] count]-1 inSection: lastSection];
+//        [aTableView scrollToRowAtIndexPath:indexPath
+//                          atScrollPosition:UITableViewScrollPositionBottom animated:animated];
+//    }
+    
+    if ([arrayChat count] > 0) {
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow: arrayChat.count-1 inSection: 0];
         [aTableView scrollToRowAtIndexPath:indexPath
                           atScrollPosition:UITableViewScrollPositionBottom animated:animated];
     }
