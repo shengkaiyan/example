@@ -218,6 +218,19 @@
 		1603220A1727BF53000C3E26 /* EmojiTransport.m in Sources */ = {isa = PBXBuildFile; fileRef = 160322051727BF53000C3E26 /* EmojiTransport.m */; };
 		160322101728FEC6000C3E26 /* JBYMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 1603220F1728FEC3000C3E26 /* JBYMessage.m */; };
 		160322131729014C000C3E26 /* JBYChatCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1603221217290149000C3E26 /* JBYChatCell.m */; };
+		1603221717290810000C3E26 /* OHAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1603221617290810000C3E26 /* OHAttributedLabel.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		16032219172908B2000C3E26 /* test.gif in Resources */ = {isa = PBXBuildFile; fileRef = 16032218172908B1000C3E26 /* test.gif */; };
+		16032220172908C6000C3E26 /* NSAttributedString+Attributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 1603221B172908C4000C3E26 /* NSAttributedString+Attributes.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		16032221172908C6000C3E26 /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = 1603221D172908C5000C3E26 /* RegexKitLite.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		16032222172908C6000C3E26 /* SCGIFImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1603221F172908C6000C3E26 /* SCGIFImageView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		1603222417290980000C3E26 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 160322231729097E000C3E26 /* CoreText.framework */; };
+		1603222617290AC1000C3E26 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1603222517290ABF000C3E26 /* libicucore.dylib */; };
+		16032228172916D8000C3E26 /* dictEmoji.plist in Resources */ = {isa = PBXBuildFile; fileRef = 16032227172916D5000C3E26 /* dictEmoji.plist */; };
+		1603222B172929CD000C3E26 /* MarkupParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 1603222A172929CC000C3E26 /* MarkupParser.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		16032230172A600C000C3E26 /* Speak.png in Resources */ = {isa = PBXBuildFile; fileRef = 1603222C172A6002000C3E26 /* Speak.png */; };
+		16032231172A600C000C3E26 /* Speak@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1603222D172A6004000C3E26 /* Speak@2x.png */; };
+		16032232172A600C000C3E26 /* Voice.png in Resources */ = {isa = PBXBuildFile; fileRef = 1603222E172A6006000C3E26 /* Voice.png */; };
+		16032233172A600C000C3E26 /* Voice@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1603222F172A600A000C3E26 /* Voice@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -447,6 +460,24 @@
 		1603220F1728FEC3000C3E26 /* JBYMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JBYMessage.m; path = emoji/Classes/JBYMessage.m; sourceTree = "<group>"; };
 		1603221117290147000C3E26 /* JBYChatCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JBYChatCell.h; path = emoji/Classes/JBYChatCell.h; sourceTree = "<group>"; };
 		1603221217290149000C3E26 /* JBYChatCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JBYChatCell.m; path = emoji/Classes/JBYChatCell.m; sourceTree = "<group>"; };
+		1603221517290810000C3E26 /* OHAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHAttributedLabel.h; sourceTree = "<group>"; };
+		1603221617290810000C3E26 /* OHAttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHAttributedLabel.m; sourceTree = "<group>"; };
+		16032218172908B1000C3E26 /* test.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = test.gif; sourceTree = "<group>"; };
+		1603221A172908C4000C3E26 /* NSAttributedString+Attributes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+Attributes.h"; sourceTree = "<group>"; };
+		1603221B172908C4000C3E26 /* NSAttributedString+Attributes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+Attributes.m"; sourceTree = "<group>"; };
+		1603221C172908C5000C3E26 /* RegexKitLite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegexKitLite.h; sourceTree = "<group>"; };
+		1603221D172908C5000C3E26 /* RegexKitLite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegexKitLite.m; sourceTree = "<group>"; };
+		1603221E172908C5000C3E26 /* SCGIFImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCGIFImageView.h; sourceTree = "<group>"; };
+		1603221F172908C6000C3E26 /* SCGIFImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCGIFImageView.m; sourceTree = "<group>"; };
+		160322231729097E000C3E26 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		1603222517290ABF000C3E26 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
+		16032227172916D5000C3E26 /* dictEmoji.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = dictEmoji.plist; sourceTree = "<group>"; };
+		16032229172929CA000C3E26 /* MarkupParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarkupParser.h; sourceTree = "<group>"; };
+		1603222A172929CC000C3E26 /* MarkupParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarkupParser.m; sourceTree = "<group>"; };
+		1603222C172A6002000C3E26 /* Speak.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Speak.png; sourceTree = "<group>"; };
+		1603222D172A6004000C3E26 /* Speak@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Speak@2x.png"; sourceTree = "<group>"; };
+		1603222E172A6006000C3E26 /* Voice.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Voice.png; sourceTree = "<group>"; };
+		1603222F172A600A000C3E26 /* Voice@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Voice@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -454,6 +485,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1603222617290AC1000C3E26 /* libicucore.dylib in Frameworks */,
+				1603222417290980000C3E26 /* CoreText.framework in Frameworks */,
 				1603204A1726230B000C3E26 /* UIKit.framework in Frameworks */,
 				1603204C1726230B000C3E26 /* Foundation.framework in Frameworks */,
 				1603204E1726230B000C3E26 /* CoreGraphics.framework in Frameworks */,
@@ -484,6 +517,8 @@
 		160320481726230B000C3E26 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1603222517290ABF000C3E26 /* libicucore.dylib */,
+				160322231729097E000C3E26 /* CoreText.framework */,
 				160320491726230B000C3E26 /* UIKit.framework */,
 				1603204B1726230B000C3E26 /* Foundation.framework */,
 				1603204D1726230B000C3E26 /* CoreGraphics.framework */,
@@ -504,6 +539,7 @@
 		160320501726230B000C3E26 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				16032227172916D5000C3E26 /* dictEmoji.plist */,
 				160321F71726C9B8000C3E26 /* faceMap_ch.plist */,
 				160321F81726C9B8000C3E26 /* faceMap_en.plist */,
 				1603207917265B56000C3E26 /* images */,
@@ -527,6 +563,7 @@
 				1603221217290149000C3E26 /* JBYChatCell.m */,
 				1603220E1728FEC1000C3E26 /* JBYMessage.h */,
 				1603220F1728FEC3000C3E26 /* JBYMessage.m */,
+				160322141729080E000C3E26 /* CoreText */,
 				160321FB1727BF52000C3E26 /* emoji */,
 				1603208217266AFE000C3E26 /* Categories */,
 				160320731726282C000C3E26 /* GrayPage */,
@@ -552,6 +589,11 @@
 			children = (
 				160320A21726C993000C3E26 /* face */,
 				1603208617266E7E000C3E26 /* chat_receive_nor.png */,
+				16032218172908B1000C3E26 /* test.gif */,
+				1603222C172A6002000C3E26 /* Speak.png */,
+				1603222D172A6004000C3E26 /* Speak@2x.png */,
+				1603222E172A6006000C3E26 /* Voice.png */,
+				1603222F172A600A000C3E26 /* Voice@2x.png */,
 				1603209617267301000C3E26 /* face.png */,
 				1603209717267301000C3E26 /* face@2x.png */,
 				1603209E1726AF29000C3E26 /* facesBack.png */,
@@ -776,6 +818,24 @@
 			);
 			name = emoji;
 			path = emoji/Classes/emoji;
+			sourceTree = "<group>";
+		};
+		160322141729080E000C3E26 /* CoreText */ = {
+			isa = PBXGroup;
+			children = (
+				1603221517290810000C3E26 /* OHAttributedLabel.h */,
+				1603221617290810000C3E26 /* OHAttributedLabel.m */,
+				1603221A172908C4000C3E26 /* NSAttributedString+Attributes.h */,
+				1603221B172908C4000C3E26 /* NSAttributedString+Attributes.m */,
+				1603221C172908C5000C3E26 /* RegexKitLite.h */,
+				1603221D172908C5000C3E26 /* RegexKitLite.m */,
+				1603221E172908C5000C3E26 /* SCGIFImageView.h */,
+				1603221F172908C6000C3E26 /* SCGIFImageView.m */,
+				16032229172929CA000C3E26 /* MarkupParser.h */,
+				1603222A172929CC000C3E26 /* MarkupParser.m */,
+			);
+			name = CoreText;
+			path = emoji/Classes/CoreText;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1025,6 +1085,12 @@
 				160321F61726C995000C3E26 /* 085@2x.png in Resources */,
 				160321F91726C9B8000C3E26 /* faceMap_ch.plist in Resources */,
 				160321FA1726C9B8000C3E26 /* faceMap_en.plist in Resources */,
+				16032219172908B2000C3E26 /* test.gif in Resources */,
+				16032228172916D8000C3E26 /* dictEmoji.plist in Resources */,
+				16032230172A600C000C3E26 /* Speak.png in Resources */,
+				16032231172A600C000C3E26 /* Speak@2x.png in Resources */,
+				16032232172A600C000C3E26 /* Voice.png in Resources */,
+				16032233172A600C000C3E26 /* Voice@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1048,6 +1114,11 @@
 				1603220A1727BF53000C3E26 /* EmojiTransport.m in Sources */,
 				160322101728FEC6000C3E26 /* JBYMessage.m in Sources */,
 				160322131729014C000C3E26 /* JBYChatCell.m in Sources */,
+				1603221717290810000C3E26 /* OHAttributedLabel.m in Sources */,
+				16032220172908C6000C3E26 /* NSAttributedString+Attributes.m in Sources */,
+				16032221172908C6000C3E26 /* RegexKitLite.m in Sources */,
+				16032222172908C6000C3E26 /* SCGIFImageView.m in Sources */,
+				1603222B172929CD000C3E26 /* MarkupParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1090,7 +1161,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -1114,7 +1185,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;

@@ -8,9 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "EFFaceBoard.h"
+#import "OHAttributedLabel.h"
+#import <AVFoundation/AVFoundation.h>
 
-@interface EFViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, UITextViewDelegate>
+@interface EFViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, UITextViewDelegate, OHAttributedLabelDelegate, AVAudioPlayerDelegate>
 {
+    NSDictionary *dictEmoji;
     NSMutableArray *arrayChat;
     UITableView *aTableView;
     
@@ -20,10 +23,19 @@
     UIButton *sendButton;
     UIButton *btnCharacterCount;
     UIButton *faceButton;
+    UIButton *voiceButton;
+    UIButton *speakButton;
     
     BOOL showFaceBoard;
+    BOOL showSpeakingState;
     
     EFFaceBoard *faceBoard;
+    
+    // record
+    NSURL *recordedFile;
+    AVAudioPlayer *player;
+    AVAudioRecorder *recorder;
+    BOOL isRecording;
 }
 
 @end

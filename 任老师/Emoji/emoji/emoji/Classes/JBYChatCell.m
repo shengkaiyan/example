@@ -80,7 +80,7 @@
     [cell.lbTime setTextAlignment: UITextAlignmentRight];
     [cell addSubview: [cell lbTime]];
     
-    [cell setLbContent: [[UILabel alloc] initWithFrame: CGRectMake(12, 30, 250, 20)]];
+    [cell setLbContent: [[OHAttributedLabel alloc] initWithFrame: CGRectMake(12, 30, 250, 20)]];
     [[cell lbContent] setFont: [UIFont systemFontOfSize: 15]];
     cell.lbContent.backgroundColor = [UIColor clearColor];
     cell.lbContent.numberOfLines = 0;
@@ -100,7 +100,14 @@
     [cell.ivProfile.layer setMasksToBounds:YES];
     [cell addSubview: [cell ivProfile]];
     
+    NSLog(@"%d", cell.canBecomeFirstResponder);
+//    cell.canBecomeFirstResponder = YES;
+    
 	return cell;
+}
+
+- (BOOL)canBecomeFirstResponder{
+    return YES;
 }
 
 - (void)layoutSubviews
@@ -109,9 +116,13 @@
     
     CGFloat ivBubble_Y = 6;
     
-    CGSize bubbleSize = [JBYChatCell sizeForDescription: lbContent.text withTableWidth: 250 Font: [UIFont systemFontOfSize: 15] LineBreakMode: UILineBreakModeWordWrap];
+//    CGSize bubbleSize = [JBYChatCell sizeForDescription: lbContent.text withTableWidth: 250 Font: [UIFont systemFontOfSize: 15] LineBreakMode: UILineBreakModeWordWrap];
+//    
+//    CGFloat lbContentHeight = [JBYChatCell neededHeightForDescription: lbContent.text withTableWidth: 250 Font: [UIFont systemFontOfSize: 15] LineBreakMode: UILineBreakModeWordWrap];
     
-    CGFloat lbContentHeight = [JBYChatCell neededHeightForDescription: lbContent.text withTableWidth: 250 Font: [UIFont systemFontOfSize: 15] LineBreakMode: UILineBreakModeWordWrap];
+    CGSize bubbleSize = lbContent.frame.size;
+//    bubbleSize.height += 20;
+    CGFloat lbContentHeight = lbContent.frame.size.height;
     CGRect frame = self.lbContent.frame;
     
     CGFloat bubbleWidth = bubbleSize.width;

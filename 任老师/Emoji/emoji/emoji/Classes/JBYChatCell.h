@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "OHAttributedLabel.h"
 
 @interface JBYChatCell : UITableViewCell
 {
@@ -14,7 +15,7 @@
     UIButton        *btnProfile;
     UILabel         *lbName;
     UILabel         *lbTime;
-    UILabel         *lbContent;
+    OHAttributedLabel         *lbContent;
     UIImageView     *ivBubble;
 }
 
@@ -22,7 +23,7 @@
 @property (strong, nonatomic) UIButton        *btnProfile;
 @property (strong, nonatomic) UILabel         *lbName;
 @property (strong, nonatomic) UILabel         *lbTime;
-@property (strong, nonatomic) UILabel         *lbContent;
+@property (strong, nonatomic) OHAttributedLabel         *lbContent;
 @property (strong, nonatomic) UIImageView     *ivBubble;
 
 @property (assign, nonatomic) BOOL isSend;

@@ -31,6 +31,27 @@ const float BUTTON_HEIGHT = 30;
             dictFaceImage = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle]pathForResource:@"faceMap_en" ofType:@"plist"]];
         }
         
+        
+//        // create dictEmoji file
+//#define DOCUMENTDIRECTORY                           [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex: 0]
+//
+//        NSString *file = [NSString stringWithFormat: @"%@/dictEmoji.plist", DOCUMENTDIRECTORY];
+//        NSMutableDictionary *newDict = [[NSMutableDictionary alloc] init];
+//        
+//        NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle]pathForResource:@"faceMap_ch" ofType:@"plist"]];
+//        for (NSString *key in [dict allKeys]) {
+////            [newDict setObject: key forKey: [dict objectForKey: key]];
+//            [newDict setObject: [NSString stringWithFormat: @"%@.png", key] forKey: [dict objectForKey: key]];
+//        }
+//
+//        dict = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle]pathForResource:@"faceMap_en" ofType:@"plist"]];
+//        for (NSString *key in [dict allKeys]) {
+//            [newDict setObject: [NSString stringWithFormat: @"%@.png", key] forKey: [dict objectForKey: key]];
+//        }
+//        
+//        [newDict writeToFile: file atomically: YES];
+//        // end create dictEmoji file
+        
         // init image face
         arrayFaceSystem = [Emoji allEmoji];
         

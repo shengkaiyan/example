@@ -12,6 +12,13 @@
 #import "JBYMessage.h"
 #import "JBYChatCell.h"
 
+
+#import "RegexKitLite.h"
+#import "SCGIFImageView.h"
+#import "MarkupParser.h"
+#import "NSAttributedString+Attributes.h"
+#import <QuartzCore/QuartzCore.h>
+
 #define CHAT_BACKGROUND_COLOR [UIColor colorWithRed:0.859f green:0.886f blue:0.929f alpha:1.0f]
 
 #define VIEW_WIDTH    self.view.frame.size.width
@@ -51,6 +58,8 @@ static const int kWeiboMaxWordCount = 140;
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        
+        dictEmoji = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle]pathForResource:@"dictEmoji" ofType:@"plist"]];
     }
     return self;
 }
@@ -136,7 +145,24 @@ static const int kWeiboMaxWordCount = 140;
     [faceButton addTarget:self action:@selector(disFaceKeyboard) forControlEvents:UIControlEventTouchUpInside];
     faceButton.frame = CGRectMake(chatBar.frame.size.width - 100.0f, 5.0f, 34.0f, 34.0f);
     [chatBar addSubview:faceButton];
-
+    
+    voiceButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    voiceButton.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleTopMargin;
+    [voiceButton setBackgroundImage:[UIImage imageNamed:@"Voice"] forState:UIControlStateNormal];
+    [voiceButton addTarget:self action:@selector(ChangeSpeakState) forControlEvents:UIControlEventTouchUpInside];
+    voiceButton.frame = CGRectMake(10.0f, 5.0f, 34.0f, 34.0f);
+    [chatBar addSubview:voiceButton];
+    
+    speakButton = [UIButton buttonWithType: UIButtonTypeRoundedRect];
+    speakButton.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleTopMargin;
+    [speakButton setTitle:@"按住说话" forState: UIControlStateNormal];
+    [speakButton addTarget:self action:@selector(startSpeak) forControlEvents:UIControlEventTouchDown];
+    [speakButton addTarget:self action:@selector(endSpeak) forControlEvents:UIControlEventTouchUpInside];
+    [speakButton addTarget:self action:@selector(cancelSpeak) forControlEvents:UIControlEventTouchUpOutside];
+    speakButton.frame = CGRectMake(40.0f, 5.0f, 134.0f, 34.0f);
+    [chatBar addSubview:speakButton];
+    speakButton.hidden = YES;
+    
     // Create sendButton.
     sendButton = [UIButton buttonWithType:UIButtonTypeCustom];
     sendButton.clearsContextBeforeDrawing = NO;
@@ -176,6 +202,47 @@ static const int kWeiboMaxWordCount = 140;
     faceBoard.inputTextView = chatInput;
     
     showFaceBoard = NO;
+    showSpeakingState = NO;
+}
+
+- (void)CancelSpeakState
+{
+    speakButton.hidden = YES;
+    
+    [voiceButton setBackgroundImage:[UIImage imageNamed:@"Voice"] forState:UIControlStateNormal];
+}
+
+-(void)ChangeSpeakState
+{
+    showSpeakingState = !showSpeakingState;
+    
+    if (showSpeakingState) {
+        [chatInput resignFirstResponder];
+        [faceButton setBackgroundImage:[UIImage imageNamed:@"face"] forState:UIControlStateNormal];
+        showFaceBoard = NO;
+        speakButton.hidden = NO;
+        
+        [voiceButton setBackgroundImage:[UIImage imageNamed:@"Text"] forState:UIControlStateNormal];
+    }
+    else
+    {
+        [self CancelSpeakState];
+    }
+}
+
+-(void)cancelSpeak
+{
+    NSLog(@"cancelSpeak");
+}
+
+-(void)startSpeak
+{
+    NSLog(@"startSpeak");
+}
+
+-(void)endSpeak
+{
+    NSLog(@"endSpeak");
 }
 
 - (void)sendMessage
@@ -263,57 +330,168 @@ static const int kWeiboMaxWordCount = 140;
 //    chatInput.contentOffset = CGPointMake(0.0f, 6.0f); // fix quirk
 }
 
-//- (void)AdjustToolBarY:(CGFloat)height
-//{
-//    [UIView beginAnimations:nil context:NULL];
-//    [UIView setAnimationCurve:animationCurve];
-//    [UIView setAnimationDuration:animationDuration];
-//    CGRect viewFrame = self.view.frame;
-//    //    NSLog(@"viewFrame y: %@", NSStringFromCGRect(viewFrame));
-//    
-//    CGRect keyboardFrameEndRelative = [self.view convertRect:keyboardEndFrame fromView:nil];
-//    //    NSLog(@"self.view: %@", self.view);
-//    NSLog(@"keyboardFrameEndRelative: %@", NSStringFromCGRect(keyboardFrameEndRelative));
-//    //
-//    viewFrame.size.height =  keyboardFrameEndRelative.origin.y;
-//    self.view.frame = viewFrame;
-//    [UIView commitAnimations];
-//    
-//    [self scrollToBottomAnimated:YES];
-//    
-//    chatInput.contentInset = UIEdgeInsetsMake(0.0f, 0.0f, 3.0f, 0.0f);
-//    chatInput.contentOffset = CGPointMake(0.0f, 6.0f); // fix quirk
+
+- (NSString *)escapedString:(NSString *)oldString
+{
+    NSString *escapedString_lt = [oldString stringByReplacingOccurrencesOfString:@"<" withString:@"&lt"];
+    NSString *escapedString = [escapedString_lt stringByReplacingOccurrencesOfString:@">" withString:@"&gt"];
+    return escapedString;
+}
+
+#pragma OHAttributedLabelDelegate
+- (BOOL)attributedLabel:(OHAttributedLabel *)attributedLabel shouldFollowLink:(NSTextCheckingResult *)linkInfo
+{
+    NSString *requestString = [linkInfo.URL absoluteString];
+    NSLog(@"%@",requestString);
+    if ([[UIApplication sharedApplication]canOpenURL:linkInfo.URL]) {
+        [[UIApplication sharedApplication]openURL:linkInfo.URL];
+    }
+    return NO;
+}
+
+-(UIColor*)colorForLink:(NSTextCheckingResult*)linkInfo underlineStyle:(int32_t*)underlineStyle //!< Combination of CTUnderlineStyle and CTUnderlineStyleModifiers
+{
+    return [UIColor blueColor];
+}
+
+- (void)creatAttributedLabel:(NSString *)o_text Label:(OHAttributedLabel *)label
+{
+    [label setNeedsDisplay];
+    NSMutableArray *httpArr = [self addHttpArr:o_text];
+    NSMutableArray *phoneNumArr = [self addPhoneNumArr:o_text];
+    
+    NSString *text = [self transformString:o_text];
+    text = [NSString stringWithFormat:@"<font color='black' strokeColor='gray' face='Palatino-Roman'>%@",text];
+    
+    MarkupParser* p = [[MarkupParser alloc] init];
+    NSMutableAttributedString* attString = [p attrStringFromMarkup: text];
+    //    attString = [NSMutableAttributedString attributedStringWithAttributedString:attString];
+    [attString setFont:[UIFont systemFontOfSize:16]];
+    label.backgroundColor = [UIColor clearColor];
+    [label setAttString:attString withImages:p.images];
+    
+    NSString *string = attString.string;
+    
+    if ([phoneNumArr count]) {
+        for (NSString *phoneNum in phoneNumArr) {
+            [label addCustomLink:[NSURL URLWithString:phoneNum] inRange:[string rangeOfString:phoneNum]];
+        }
+    }
+    
+    if ([httpArr count]) {
+        for (NSString *httpStr in httpArr) {
+            [label addCustomLink:[NSURL URLWithString:httpStr] inRange:[string rangeOfString:httpStr]];
+        }
+    }
+    
+    label.delegate = self;
+    CGRect labelRect = label.frame;
+    labelRect.size.width = [label sizeThatFits:CGSizeMake(250, CGFLOAT_MAX)].width;
+    labelRect.size.height = [label sizeThatFits:CGSizeMake(250, CGFLOAT_MAX)].height;
+    label.frame = labelRect;
+    //    label.onlyCatchTouchesOnLinks = NO;
+    label.underlineLinks = NO;//链接是否带下划线
+    [label.layer display];
+    // 调用这个方法立即触发label的|drawTextInRect:|方法，
+    // |setNeedsDisplay|方法有滞后，因为这个需要画面稳定后才调用|drawTextInRect:|方法
+    // 这里我们创建的时候就需要调用|drawTextInRect:|方法，所以用|display|方法，这个我找了很久才发现的
+}
+
+- (void)drawImage:(OHAttributedLabel *)label
+{
+    for (NSArray *info in label.imageInfoArr) {
+//        NSString *filePath = [[NSBundle mainBundle] pathForResource:[info objectAtIndex:0] ofType: @"png"];
+        NSString *filePath = [[NSBundle mainBundle] pathForResource:[info objectAtIndex:0] ofType: nil];
+        NSData *data = [[NSData alloc] initWithContentsOfFile:filePath];
+        SCGIFImageView *imageView = [[SCGIFImageView alloc] initWithGIFData:data];
+        imageView.frame = CGRectFromString([info objectAtIndex:2]);
+        [label addSubview:imageView];//label内添加图片层
+        [label bringSubviewToFront:imageView];
+    }
+}
+
+#pragma mark - 正则匹配电话号码，网址链接，Email地址
+- (NSMutableArray *)addHttpArr:(NSString *)text
+{
+    //匹配网址链接
+    NSString *regex_http = @"(https?|ftp|file)+://[^\\s]*";
+    NSArray *array_http = [text componentsMatchedByRegex:regex_http];
+    NSMutableArray *httpArr = [NSMutableArray arrayWithArray:array_http];
+    return httpArr;
+}
+
+- (NSMutableArray *)addPhoneNumArr:(NSString *)text
+{
+    //匹配电话号码
+    NSString *regex_phonenum = @"\\d{3}-\\d{7}|\\d{3}-\\d{7}|\\d{4}-\\d{8}|\\d{4}-\\d{8}|1+[358]+\\d{9}|\\d{8}|\\d{7}";
+    NSArray *array_phonenum = [text componentsMatchedByRegex:regex_phonenum];
+    NSMutableArray *phoneNumArr = [NSMutableArray arrayWithArray:array_phonenum];
+    return phoneNumArr;
+}
+
+- (NSMutableArray *)addEmailArr:(NSString *)text
+{
+    //匹配Email地址
+    NSString *regex_email = @"\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*.\\w+([-.]\\w+)*";
+    NSArray *array_email = [text componentsMatchedByRegex:regex_email];
+    NSMutableArray *emailArr = [NSMutableArray arrayWithArray:array_email];
+    return emailArr;
+}
+
+- (NSString *)transformString:(NSString *)originalStr
+{
+    //匹配表情，将表情转化为html格式
+    NSString *text = originalStr;
+    NSString *regex_emoji = @"\\[[a-zA-Z0-9\\u4e00-\\u9fa5]+\\]";
+    NSArray *array_emoji = [text componentsMatchedByRegex:regex_emoji];
+    if ([array_emoji count]) {
+        for (NSString *str in array_emoji) {
+            NSRange range = [text rangeOfString:str];
+            NSString *i_transCharacter = [dictEmoji objectForKey:str];
+            if (i_transCharacter) {
+                NSString *imageHtml = [NSString stringWithFormat:@"<img src='%@' width='16' height='16'>",i_transCharacter];
+                text = [text stringByReplacingCharactersInRange:NSMakeRange(range.location, [str length]) withString:imageHtml];
+            }
+        }
+    }
+    //返回转义后的字符串
+    return text;
+}
+
+- (void)longPress:(UILongPressGestureRecognizer *)recognizer {
+    if (recognizer.state == UIGestureRecognizerStateBegan) {
+        JBYChatCell *cell = (JBYChatCell *)recognizer.view;
+        [cell becomeFirstResponder];
+        
+        UIMenuItem *flag = [[UIMenuItem alloc] initWithTitle:@"复制" action:@selector(flag:)];
+        
+        UIMenuItem *approve = [[UIMenuItem alloc] initWithTitle:@"转发" action:@selector(approve:)];
+        
+        UIMenuItem *deny = [[UIMenuItem alloc] initWithTitle:@"分享" action:@selector(deny:)];
+        
+        UIMenuController *menu = [UIMenuController sharedMenuController];
+        
+        [menu setMenuItems:[NSArray arrayWithObjects:flag, approve, deny, nil]];
+        [menu setTargetRect:cell.frame inView:cell.superview];
+        [menu setMenuVisible:YES animated:YES];
+    }
+}
+
+//- (BOOL)canBecomeFirstResponder{
+//    return YES;
 //}
 
-//- (void)longPress:(MyLongPressGestureRecognizer *)gestureRecognizer
-//{
-//    currentLabel = gestureRecognizer.label;
-//    gestureRecognizer.label.backgroundColor = [UIColor lightGrayColor];//label背景变灰，提示用户选中已复制内容
-//    
-//    if ([gestureRecognizer state] == UIGestureRecognizerStateBegan)
-//    {
-//        NSIndexPath *pressedIndexPath = [self.tableView indexPathForRowAtPoint:[gestureRecognizer locationInView:self.tableView]];
-//        currentIndexRow = pressedIndexPath.row;//长按手势在哪个Cell内
-//        
-//        if( ![self becomeFirstResponder] )
-//        {
-//            NSLog(@"Couldn't become first responder ");
-//            return;
-//        }
-//        
-//        UIMenuController *menuController = [UIMenuController sharedMenuController];
-//        [menuController setMenuVisible:NO];
-//        
-//        MyMenuItem *menuItem1 = [[MyMenuItem alloc] initWithTitle:@"拷贝" action:@selector(menuItem1:)];
-//        menuItem1.label = gestureRecognizer.label;
-//        [menuController setMenuItems:[NSArray arrayWithObjects:menuItem1, nil]];
-//        [menuController setTargetRect:gestureRecognizer.view.frame inView:gestureRecognizer.view];
-//        [menuController setMenuVisible:YES animated:YES];
-//        
-//        [menuItem1 release];
-//    }
-//    
-//}
+- (void)flag:(id)sender {
+    NSLog(@"Cell was flagged");
+}
+
+- (void)approve:(id)sender {
+    NSLog(@"Cell was approved");
+}
+
+- (void)deny:(id)sender {
+    NSLog(@"Cell was denied");
+}
 
 #pragma mark - Table view data source
 
@@ -346,9 +524,15 @@ static const int kWeiboMaxWordCount = 140;
     
     JBYMessage *message = [arrayChat objectAtIndex: indexPath.row];
     
-    cell.lbContent.text = message.content;
+    [self creatAttributedLabel: message.content Label: cell.lbContent];
+    [self drawImage: cell.lbContent];
+//    cell.lbContent.text = message.content;
     cell.isHideName = YES;
     cell.isSend = message.type;
+
+    
+    UILongPressGestureRecognizer *recognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPress:)];
+    [cell addGestureRecognizer:recognizer];
     
     return cell;
 }
@@ -362,31 +546,46 @@ static const int kWeiboMaxWordCount = 140;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSLog(@"height: %d", indexPath.row);
+    
     CGFloat contentWidth = 250;
     // 设置字体
     
-//    JBYMessage *MessageInfo = [arrayChat objectAtIndex: indexPath.row];
+    JBYMessage *MessageInfo = [arrayChat objectAtIndex: indexPath.row];
     
     // 显示的内容
-    NSString *content = @"123";
+    NSString *content = MessageInfo.content;
     
     // 计算出内容的高宽
-    CGFloat height = [self neededHeightForDescription: content withTableWidth: contentWidth Font: [UIFont systemFontOfSize: 15] LineBreakMode: UILineBreakModeWordWrap];
+//    CGFloat height = [self neededHeightForDescription: content withTableWidth: contentWidth Font: [UIFont systemFontOfSize: 15] LineBreakMode: UILineBreakModeWordWrap];
     
-    if (height<28) {
-        height = 28;
-    }
-    
-    height += 16;
-    
-    
-    if (0 == indexPath.row)
-    {  // 需要显示时间
-        height += 15;
-    }
+    OHAttributedLabel *lbContent = [[OHAttributedLabel alloc] init];
+    [self creatAttributedLabel: content Label: lbContent];
+    CGFloat height = lbContent.frame.size.height;
+//    if (height<28) {
+//        height = 28;
+//    }
+//    
+//    height += 16;
+//    
+//    
+//    if (0 == indexPath.row)
+//    {  // 需要显示时间
+//        height += 15;
+//    }
 
     // 返回需要的高度
-    return height;
+    return height+30;
+}
+
+
+#pragma mark - Table view delegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [chatInput resignFirstResponder];
+    [faceButton setBackgroundImage:[UIImage imageNamed:@"face"] forState:UIControlStateNormal];
+    showFaceBoard = NO;
 }
 
 - (void)enableSendButton {
