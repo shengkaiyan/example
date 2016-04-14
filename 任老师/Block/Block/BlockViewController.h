@@ -29,6 +29,8 @@ typedef void (^DeleteCellBlock)(NSString *deletedString);
 
 - (int)UpdateDat2;
 
+- (int)UpdateDat3;
+
 -(void)setSelectCellBlock:(SelectCellBlock)block;
 -(void)setDeleteCellBlock:(DeleteCellBlock)block;
 
